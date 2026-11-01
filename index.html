@@ -87,6 +87,28 @@ footer{padding:34px 0 8px;color:var(--muted);font-size:14px;text-align:center}
 .wa::after{content:"";position:absolute;inset:0;border-radius:14px;border:2px solid #1FA855;animation:ring 2.6s ease-out infinite;pointer-events:none}
 @keyframes ring{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.07,1.35);opacity:0}}
 @media (prefers-reduced-motion:reduce){.wa::after{animation:none}.v,.path i{transition:none}}
+.hero{background-image:linear-gradient(rgba(237,230,214,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(237,230,214,.05) 1px,transparent 1px);background-size:32px 32px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);background:var(--surface);border:1px solid var(--line);border-radius:18px;margin-top:-30px;position:relative;box-shadow:0 10px 30px rgba(10,42,51,.14);text-align:center;padding:16px 4px}
+.stats div{padding:0 6px;border-inline-start:1px solid var(--line);font-size:13px;color:var(--muted);line-height:1.4}
+.stats div:first-child{border:0}
+.stats strong{display:block;font-size:34px;font-weight:900;color:var(--coral);line-height:1.15;font-variant-numeric:tabular-nums}
+.knee{width:100%;max-width:440px;margin:0 auto;display:block}
+.bone{stroke:var(--ink);fill:none;stroke-linecap:round}
+.arc{stroke:var(--coral);stroke-width:4;fill:none}
+.kt{font-weight:900;fill:var(--ink);font-size:30px;direction:ltr}
+.klb{fill:var(--muted);font-size:13px}
+.curve{margin-top:30px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px 16px 10px}
+.curve svg{width:100%;display:block}
+.curve path.ln{fill:none;stroke:var(--mint);stroke-width:5;stroke-linecap:round;stroke-dasharray:420;stroke-dashoffset:420;transition:stroke-dashoffset 2.6s ease-out}
+.curve.on path.ln{stroke-dashoffset:0}
+.curve small{color:var(--muted);display:block;text-align:center}
+@media (prefers-reduced-motion:no-preference){
+.gonio{animation:pop .9s cubic-bezier(.2,.8,.2,1) both}
+.hero .wrap>div:last-child>*{animation:rise .7s ease-out both}
+.hero .wrap>div:last-child>:nth-child(1){animation-delay:.3s}.hero .wrap>div:last-child>:nth-child(2){animation-delay:.45s}.hero .wrap>div:last-child>:nth-child(3){animation-delay:.6s}.hero .wrap>div:last-child>:nth-child(4){animation-delay:.75s}.hero .wrap>div:last-child>:nth-child(5){animation-delay:.9s}
+@keyframes pop{from{opacity:0;transform:scale(.88)}}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}}
+}
 </style>
 </head>
 <body>
@@ -114,6 +136,7 @@ footer{padding:34px 0 8px;color:var(--muted);font-size:14px;text-align:center}
     </div>
   </div>
 </header>
+<div class="wrap"><div class="stats"><div><strong data-n="72">72</strong>ساعة تدريب متخصص في العمود الفقري</div><div><strong data-n="8">8</strong>أيام برنامج مكثف</div><div><strong>⚽</strong>طبيب فريق كرة قدم</div></div></div>
 
 <main class="wrap">
   <section>
@@ -130,6 +153,25 @@ footer{padding:34px 0 8px;color:var(--muted);font-size:14px;text-align:center}
   </section>
 
   <section>
+    <h2>مدى الحركة</h2>
+    <p class="sub">أقيس زاوية كل مفصل وأتابع تحسنها من جلسة للتانية.</p>
+    <svg class="knee" viewBox="0 0 320 250" role="img" aria-label="رسم متحرك لثني مفصل الركبة">
+      <line x1="190" y1="70" x2="300" y2="70" stroke="var(--muted)" stroke-dasharray="5 6"/>
+      <line class="bone" x1="34" y1="70" x2="190" y2="70" stroke-width="42"/>
+      <line x1="34" y1="70" x2="190" y2="70" stroke="var(--bone)" stroke-width="38" stroke-linecap="round"/>
+      <path id="kMus" d="M52 58 Q120 34 190 54 L190 68 L52 68Z" fill="var(--coral)"/>
+      <line id="kO" class="bone" x1="190" y1="70" x2="190" y2="190" stroke-width="34"/>
+      <line id="kI" x1="190" y1="70" x2="190" y2="190" stroke="var(--bone)" stroke-width="30" stroke-linecap="round"/>
+      <circle id="kFoot" cx="190" cy="190" r="13" fill="var(--ink)"/>
+      <path id="kArc" class="arc" d=""/>
+      <circle cx="190" cy="70" r="12" fill="var(--surface)" stroke="var(--coral)" stroke-width="4"/>
+      <text id="kTxt" class="kt" x="300" y="30" text-anchor="end">0°</text>
+      <text class="klb" x="30" y="140">عضلة الفخذ الأمامية</text>
+      <text class="klb" x="30" y="160">زاوية ثني الركبة</text>
+    </svg>
+  </section>
+
+  <section>
     <h2>مسار العلاج</h2>
     <p class="sub">من أول جلسة لحد ما ترجع لنشاطك.</p>
     <ol class="path" id="path"><i></i>
@@ -138,6 +180,7 @@ footer{padding:34px 0 8px;color:var(--muted);font-size:14px;text-align:center}
       <li><em>3</em><b>التقوية</b><span>تمارين تأهيل لتقوية العضلات الداعمة وتصحيح الحركة.</span></li>
       <li><em>4</em><b>الرجوع للملعب</b><span>تدرج في الحمل حتى ترجع لرياضتك وحياتك بثقة.</span></li>
     </ol>
+    <div class="curve" id="curve"><svg viewBox="0 0 300 110" aria-hidden="true"><path class="ln" d="M8 14 C70 18 90 62 150 78 S250 98 292 100"/></svg><small>رسم توضيحي: الألم بينخفض مع تقدم الجلسات</small></div>
   </section>
 
   <section>
@@ -207,6 +250,32 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{
 }),{threshold:.35});
 io.observe(sp);io.observe(document.getElementById("path"));
 if(still){settle();document.getElementById("path").classList.add("on")}
+/* knee flexion */
+const $=id=>document.getElementById(id);
+function knee(a){
+  const r=a*Math.PI/180,x=190+Math.cos(r)*120,y=70+Math.sin(r)*120;
+  ["kO","kI"].forEach(k=>{$(k).setAttribute("x2",x);$(k).setAttribute("y2",y)});
+  $("kFoot").setAttribute("cx",x);$("kFoot").setAttribute("cy",y);
+  $("kArc").setAttribute("d","M254 70 A64 64 0 0 1 "+(190+Math.cos(r)*64)+" "+(70+Math.sin(r)*64));
+  $("kTxt").textContent=Math.round(a)+"°";
+  $("kMus").style.opacity=.45+.55*(1-a/110);
+}
+if(still)knee(90);else(function f(n){knee(8+(Math.sin(n/1100-1.57)+1)/2*102);requestAnimationFrame(f)})(0);
+/* spine regions */
+[["عنقي",16,112],["صدري",118,214],["قطني",240,332]].forEach(r=>{
+  const l=document.createElementNS(NS,"path");l.setAttribute("d","M164 "+r[1]+" V"+r[2]);l.setAttribute("stroke","var(--coral)");l.setAttribute("stroke-width",3);l.setAttribute("stroke-linecap","round");
+  const t=document.createElementNS(NS,"text");t.setAttribute("x",198);t.setAttribute("y",(r[1]+r[2])/2+4);t.setAttribute("text-anchor","end");t.setAttribute("font-size",13);t.setAttribute("font-weight",800);t.setAttribute("fill","var(--ink)");t.textContent=r[0];
+  sp.appendChild(l);sp.appendChild(t);
+});
+/* curve + count-up */
+io.observe($("curve"));if(still)$("curve").classList.add("on");
+const co=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;co.unobserve(e.target);
+  const n=+e.target.dataset.n,t0=performance.now();
+  if(still)return;
+  (function f(t){const p=Math.min((t-t0)/1400,1);e.target.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(t0);
+}),{threshold:.6});
+document.querySelectorAll("[data-n]").forEach(el=>co.observe(el));
 </script>
 </body>
 </html>
